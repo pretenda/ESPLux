@@ -1,0 +1,199 @@
+Cmp-Mod V01 Created by Cvpcb (after 2015-may-01 BZR unknown)-product   date = 20-May-15 10:39:17 PM
+
+BeginCmp
+TimeStamp = /555C402E;
+Reference = C2;
+ValeurCmp = 220uf;
+IdModule  = Capacitors_SMD:c_elec_8x10;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C3DBD;
+Reference = C3;
+ValeurCmp = 330uf;
+IdModule  = Capacitors_SMD:c_elec_10x10;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C3E28;
+Reference = C4;
+ValeurCmp = 330uf;
+IdModule  = Capacitors_SMD:c_elec_10x10;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C3E90;
+Reference = C5;
+ValeurCmp = 330uf;
+IdModule  = Capacitors_SMD:c_elec_10x10;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C29F8;
+Reference = D1;
+ValeurCmp = BRIDGE;
+IdModule  = Parts:KBL;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C3EC9;
+Reference = D2;
+ValeurCmp = MBRS130L;
+IdModule  = Diodes_SMD:Diode-DO-214BA;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C3FB7;
+Reference = L1;
+ValeurCmp = 22uH;
+IdModule  = Parts:Inductor;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C0401;
+Reference = LED1;
+ValeurCmp = LED;
+IdModule  = LEDs:LED-0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C045A;
+Reference = LED2;
+ValeurCmp = LED;
+IdModule  = LEDs:LED-0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C2CA9;
+Reference = LED3;
+ValeurCmp = LED;
+IdModule  = LEDs:LED-0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /555BFA95;
+Reference = LED4;
+ValeurCmp = LED;
+IdModule  = LEDs:LED-0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C08B1;
+Reference = P1;
+ValeurCmp = CONN_02X03;
+IdModule  = Pin_Headers:Pin_Header_Straight_2x03;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C28C1;
+Reference = P2;
+ValeurCmp = CONN_01X02;
+IdModule  = Parts:3.81mmScrewTerminal;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C2DD7;
+Reference = P3;
+ValeurCmp = CONN_01X02;
+IdModule  = Parts:3.81mmScrewTerminal;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C04F2;
+Reference = Q1;
+ValeurCmp = NPN;
+IdModule  = Housings_SOT-23_SOT-143_TSOT-6:SOT-23;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C2E08;
+Reference = Q2;
+ValeurCmp = MOSFET_N;
+IdModule  = Transistors_TO-220:TO-220_FET-GDS_Vertical_LargePads;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C5658;
+Reference = R1;
+ValeurCmp = 10k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C04C4;
+Reference = R2;
+ValeurCmp = 100;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C0477;
+Reference = R3;
+ValeurCmp = 100;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C0521;
+Reference = R4;
+ValeurCmp = 510;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C0253;
+Reference = R5;
+ValeurCmp = 10k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C2E3F;
+Reference = R6;
+ValeurCmp = 100;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C2E9B;
+Reference = R7;
+ValeurCmp = 10k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C2BA1;
+Reference = R8;
+ValeurCmp = 1k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /555BFBB3;
+Reference = R9;
+ValeurCmp = 100;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C02E0;
+Reference = SW1;
+ValeurCmp = SW_PUSH;
+IdModule  = Parts:SMD_Tact;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C202A;
+Reference = U1;
+ValeurCmp = LM2596S-3.3;
+IdModule  = SMD_Packages:TO-263-5;
+EndCmp
+
+BeginCmp
+TimeStamp = /555C3912;
+Reference = U2;
+ValeurCmp = ESP-12;
+IdModule  = ESP8266:ESP-12;
+EndCmp
+
+EndListe
