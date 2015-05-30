@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <export version="D">
   <design>
-    <source>D:\Projects\ESPLux\trunk\Board\Board.sch</source>
-    <date>20-May-15 4:17:54 PM</date>
+    <source>D:/Projects/ESPLux/trunk/Board/Board.sch</source>
+    <date>21-May-15 4:46:57 PM</date>
     <tool>Eeschema (after 2015-may-01 BZR unknown)-product</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -30,12 +30,14 @@
     </comp>
     <comp ref="R9">
       <value>100</value>
+      <footprint>Resistors_SMD:R_0603</footprint>
       <libsource lib="Board-rescue" part="R-RESCUE-Board"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>555BFBB3</tstamp>
     </comp>
     <comp ref="R5">
       <value>10k</value>
+      <footprint>Resistors_SMD:R_0603</footprint>
       <libsource lib="Board-rescue" part="R-RESCUE-Board"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>555C0253</tstamp>
@@ -66,6 +68,7 @@
     </comp>
     <comp ref="R2">
       <value>100</value>
+      <footprint>Resistors_SMD:R_0603</footprint>
       <libsource lib="Board-rescue" part="R-RESCUE-Board"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>555C04C4</tstamp>
@@ -78,6 +81,7 @@
     </comp>
     <comp ref="R4">
       <value>510</value>
+      <footprint>Resistors_SMD:R_0603</footprint>
       <libsource lib="Board-rescue" part="R-RESCUE-Board"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>555C0521</tstamp>
@@ -135,7 +139,7 @@
     </comp>
     <comp ref="U1">
       <value>LM2596S-3.3</value>
-      <footprint>TO-263-5</footprint>
+      <footprint>SMD_Packages:TO-263-5</footprint>
       <libsource lib="dc-dc" part="LM2596S-3.3"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamp>555C202A</tstamp>
@@ -196,136 +200,6 @@
     </comp>
   </components>
   <libparts>
-    <libpart lib="Board-cache" part="BRIDGE">
-      <fields>
-        <field name="Reference">D</field>
-        <field name="Value">BRIDGE</field>
-      </fields>
-      <pins>
-        <pin num="1" name="-" type="input"/>
-        <pin num="2" name="~" type="input"/>
-        <pin num="3" name="+" type="input"/>
-        <pin num="4" name="~" type="input"/>
-      </pins>
-    </libpart>
-    <libpart lib="Board-cache" part="MOS_N">
-      <aliases>
-        <alias>MOSFET_N</alias>
-      </aliases>
-      <fields>
-        <field name="Reference">Q</field>
-        <field name="Value">MOS_N</field>
-      </fields>
-      <pins>
-        <pin num="D" name="D" type="passive"/>
-        <pin num="G" name="G" type="input"/>
-        <pin num="S" name="S" type="passive"/>
-      </pins>
-    </libpart>
-    <libpart lib="Board-cache" part="NPN">
-      <fields>
-        <field name="Reference">Q</field>
-        <field name="Value">NPN</field>
-      </fields>
-      <pins>
-        <pin num="1" name="E" type="passive"/>
-        <pin num="2" name="B" type="input"/>
-        <pin num="3" name="C" type="passive"/>
-      </pins>
-    </libpart>
-    <libpart lib="ESP8266" part="ESP-12">
-      <aliases>
-        <alias>ESP-07v2</alias>
-      </aliases>
-      <description>ESP8622 ESP-12 module, 16 pins, 2mm, PCB antenna</description>
-      <docs>http://l0l.org.uk/2014/12/esp8266-modules-hardware-guide-gotta-catch-em-all/</docs>
-      <footprints>
-        <fp>ESP-07*</fp>
-        <fp>ESP-12*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">U</field>
-        <field name="Value">ESP-12</field>
-      </fields>
-      <pins>
-        <pin num="1" name="REST" type="input"/>
-        <pin num="2" name="ADC" type="passive"/>
-        <pin num="3" name="CH_PD" type="input"/>
-        <pin num="4" name="GPIO16" type="BiDi"/>
-        <pin num="5" name="GPIO14" type="BiDi"/>
-        <pin num="6" name="GPIO12" type="BiDi"/>
-        <pin num="7" name="GPIO13" type="BiDi"/>
-        <pin num="8" name="VCC" type="power_in"/>
-        <pin num="9" name="GND" type="power_in"/>
-        <pin num="10" name="GPIO15" type="BiDi"/>
-        <pin num="11" name="GPIO2" type="BiDi"/>
-        <pin num="12" name="GPIO0" type="BiDi"/>
-        <pin num="13" name="GPIO5" type="BiDi"/>
-        <pin num="14" name="GPIO4" type="BiDi"/>
-        <pin num="15" name="RXD" type="input"/>
-        <pin num="16" name="TXD" type="output"/>
-      </pins>
-    </libpart>
-    <libpart lib="dc-dc" part="LM2596S-12">
-      <aliases>
-        <alias>LM2596S-5</alias>
-        <alias>LM2596S-3.3</alias>
-        <alias>LM2596S-ADJ</alias>
-      </aliases>
-      <description>LM2596S, TO-263, 12V 3A Step-Down VR</description>
-      <docs>http://www.ti.com/lit/ds/symlink/lm2576.pdf</docs>
-      <footprints>
-        <fp>TO-263-5*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">U</field>
-        <field name="Value">LM2596S-12</field>
-        <field name="Footprint">TO-263-5</field>
-      </fields>
-      <pins>
-        <pin num="1" name="VIN" type="power_in"/>
-        <pin num="2" name="OUT" type="output"/>
-        <pin num="3" name="GND" type="power_in"/>
-        <pin num="4" name="FB" type="input"/>
-        <pin num="5" name="~ON~/OFF" type="input"/>
-      </pins>
-    </libpart>
-    <libpart lib="conn" part="CONN_02X03">
-      <footprints>
-        <fp>Pin_Header_Straight_2X03</fp>
-        <fp>Pin_Header_Angled_2X03</fp>
-        <fp>Socket_Strip_Straight_2X03</fp>
-        <fp>Socket_Strip_Angled_2X03</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">P</field>
-        <field name="Value">CONN_02X03</field>
-      </fields>
-      <pins>
-        <pin num="1" name="P1" type="passive"/>
-        <pin num="2" name="P2" type="passive"/>
-        <pin num="3" name="P3" type="passive"/>
-        <pin num="4" name="P4" type="passive"/>
-        <pin num="5" name="P5" type="passive"/>
-        <pin num="6" name="P6" type="passive"/>
-      </pins>
-    </libpart>
-    <libpart lib="conn" part="CONN_01X02">
-      <footprints>
-        <fp>Pin_Header_Straight_1X02</fp>
-        <fp>Pin_Header_Angled_1X02</fp>
-        <fp>Socket_Strip_Straight_1X02</fp>
-        <fp>Socket_Strip_Angled_1X02</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">P</field>
-        <field name="Value">CONN_01X02</field>
-      </fields>
-      <pins>
-        <pin num="1" name="P1" type="passive"/>
-        <pin num="2" name="P2" type="passive"/>
-      </pins>
-    </libpart>
     <libpart lib="Board-rescue" part="R-RESCUE-Board">
       <footprints>
         <fp>R?</fp>
@@ -337,6 +211,25 @@
       <fields>
         <field name="Reference">R</field>
         <field name="Value">R-RESCUE-Board</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="CP">
+      <description>Polarised capacitor</description>
+      <footprints>
+        <fp>CP*</fp>
+        <fp>Elko*</fp>
+        <fp>TantalC*</fp>
+        <fp>C*elec</fp>
+        <fp>c_elec*</fp>
+        <fp>SMD*_Pol</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">CP</field>
       </fields>
       <pins>
         <pin num="1" name="~" type="passive"/>
@@ -359,25 +252,6 @@
       <pins>
         <pin num="1" name="K" type="passive"/>
         <pin num="2" name="A" type="passive"/>
-      </pins>
-    </libpart>
-    <libpart lib="device" part="CP">
-      <description>Polarised capacitor</description>
-      <footprints>
-        <fp>CP*</fp>
-        <fp>Elko*</fp>
-        <fp>TantalC*</fp>
-        <fp>C*elec</fp>
-        <fp>c_elec*</fp>
-        <fp>SMD*_Pol</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">C</field>
-        <field name="Value">CP</field>
-      </fields>
-      <pins>
-        <pin num="1" name="~" type="passive"/>
-        <pin num="2" name="~" type="passive"/>
       </pins>
     </libpart>
     <libpart lib="device" part="INDUCTOR">
@@ -435,25 +309,155 @@
         <pin num="2" name="2" type="passive"/>
       </pins>
     </libpart>
+    <libpart lib="conn" part="CONN_02X03">
+      <footprints>
+        <fp>Pin_Header_Straight_2X03</fp>
+        <fp>Pin_Header_Angled_2X03</fp>
+        <fp>Socket_Strip_Straight_2X03</fp>
+        <fp>Socket_Strip_Angled_2X03</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_02X03</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+        <pin num="2" name="P2" type="passive"/>
+        <pin num="3" name="P3" type="passive"/>
+        <pin num="4" name="P4" type="passive"/>
+        <pin num="5" name="P5" type="passive"/>
+        <pin num="6" name="P6" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="conn" part="CONN_01X02">
+      <footprints>
+        <fp>Pin_Header_Straight_1X02</fp>
+        <fp>Pin_Header_Angled_1X02</fp>
+        <fp>Socket_Strip_Straight_1X02</fp>
+        <fp>Socket_Strip_Angled_1X02</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">CONN_01X02</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+        <pin num="2" name="P2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="dc-dc" part="LM2596S-12">
+      <aliases>
+        <alias>LM2596S-5</alias>
+        <alias>LM2596S-3.3</alias>
+        <alias>LM2596S-ADJ</alias>
+      </aliases>
+      <description>LM2596S, TO-263, 12V 3A Step-Down VR</description>
+      <docs>http://www.ti.com/lit/ds/symlink/lm2576.pdf</docs>
+      <footprints>
+        <fp>TO-263-5*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">LM2596S-12</field>
+        <field name="Footprint">TO-263-5</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VIN" type="power_in"/>
+        <pin num="2" name="OUT" type="output"/>
+        <pin num="3" name="GND" type="power_in"/>
+        <pin num="4" name="FB" type="input"/>
+        <pin num="5" name="~ON~/OFF" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="Board-cache" part="NPN">
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">NPN</field>
+      </fields>
+      <pins>
+        <pin num="1" name="E" type="passive"/>
+        <pin num="2" name="B" type="input"/>
+        <pin num="3" name="C" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ESP8266" part="ESP-12">
+      <aliases>
+        <alias>ESP-07v2</alias>
+      </aliases>
+      <description>ESP8622 ESP-12 module, 16 pins, 2mm, PCB antenna</description>
+      <docs>http://l0l.org.uk/2014/12/esp8266-modules-hardware-guide-gotta-catch-em-all/</docs>
+      <footprints>
+        <fp>ESP-07*</fp>
+        <fp>ESP-12*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">ESP-12</field>
+      </fields>
+      <pins>
+        <pin num="1" name="REST" type="input"/>
+        <pin num="2" name="ADC" type="passive"/>
+        <pin num="3" name="CH_PD" type="input"/>
+        <pin num="4" name="GPIO16" type="BiDi"/>
+        <pin num="5" name="GPIO14" type="BiDi"/>
+        <pin num="6" name="GPIO12" type="BiDi"/>
+        <pin num="7" name="GPIO13" type="BiDi"/>
+        <pin num="8" name="VCC" type="power_in"/>
+        <pin num="9" name="GND" type="power_in"/>
+        <pin num="10" name="GPIO15" type="BiDi"/>
+        <pin num="11" name="GPIO2" type="BiDi"/>
+        <pin num="12" name="GPIO0" type="BiDi"/>
+        <pin num="13" name="GPIO5" type="BiDi"/>
+        <pin num="14" name="GPIO4" type="BiDi"/>
+        <pin num="15" name="RXD" type="input"/>
+        <pin num="16" name="TXD" type="output"/>
+      </pins>
+    </libpart>
+    <libpart lib="Board-cache" part="BRIDGE">
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">BRIDGE</field>
+      </fields>
+      <pins>
+        <pin num="1" name="-" type="input"/>
+        <pin num="2" name="~" type="input"/>
+        <pin num="3" name="+" type="input"/>
+        <pin num="4" name="~" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="Board-cache" part="MOS_N">
+      <aliases>
+        <alias>MOSFET_N</alias>
+      </aliases>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">MOS_N</field>
+      </fields>
+      <pins>
+        <pin num="D" name="D" type="passive"/>
+        <pin num="G" name="G" type="input"/>
+        <pin num="S" name="S" type="passive"/>
+      </pins>
+    </libpart>
   </libparts>
   <libraries>
+    <library logical="Board-rescue">
+      <uri>D:\Projects\ESPLux\trunk\Board\Board-rescue.lib</uri>
+    </library>
+    <library logical="device">
+      <uri>C:\Program Files\KiCad\share\kicad\library\device.lib</uri>
+    </library>
     <library logical="conn">
       <uri>C:\Program Files\KiCad\share\kicad\library\conn.lib</uri>
     </library>
     <library logical="dc-dc">
       <uri>C:\Program Files\KiCad\share\kicad\library\dc-dc.lib</uri>
     </library>
-    <library logical="ESP8266">
-      <uri>C:\KiCad\share\library\ESP8266.lib</uri>
-    </library>
     <library logical="Board-cache">
       <uri>D:\Projects\ESPLux\trunk\Board\Board-cache.lib</uri>
     </library>
-    <library logical="Board-rescue">
-      <uri>D:\Projects\ESPLux\trunk\Board\Board-rescue.lib</uri>
-    </library>
-    <library logical="device">
-      <uri>C:\Program Files\KiCad\share\kicad\library\device.lib</uri>
+    <library logical="ESP8266">
+      <uri>C:\KiCad\share\library\ESP8266.lib</uri>
     </library>
   </libraries>
   <nets>
@@ -461,136 +465,138 @@
       <node ref="U2" pin="11"/>
     </net>
     <net code="2" name="/Identify">
-      <node ref="U2" pin="13"/>
       <node ref="R4" pin="1"/>
+      <node ref="U2" pin="13"/>
     </net>
     <net code="3" name="/OutLogic">
-      <node ref="U2" pin="14"/>
       <node ref="R6" pin="2"/>
+      <node ref="U2" pin="14"/>
     </net>
     <net code="4" name="/RX">
-      <node ref="P1" pin="4"/>
       <node ref="U2" pin="15"/>
+      <node ref="P1" pin="4"/>
     </net>
     <net code="5" name="/TX">
-      <node ref="P1" pin="3"/>
       <node ref="U2" pin="16"/>
+      <node ref="P1" pin="3"/>
     </net>
-    <net code="6" name="Earth">
-      <node ref="D1" pin="1"/>
-      <node ref="LED4" pin="1"/>
-      <node ref="R7" pin="2"/>
-      <node ref="R5" pin="2"/>
-      <node ref="U1" pin="5"/>
-      <node ref="U1" pin="3"/>
-      <node ref="U2" pin="10"/>
-      <node ref="Q1" pin="1"/>
-      <node ref="Q2" pin="S"/>
-      <node ref="C4" pin="2"/>
-      <node ref="P1" pin="2"/>
-      <node ref="C2" pin="2"/>
-      <node ref="D2" pin="2"/>
-      <node ref="C3" pin="2"/>
-      <node ref="C5" pin="2"/>
-      <node ref="U2" pin="9"/>
-    </net>
-    <net code="7" name="Net-(D2-Pad1)">
+    <net code="6" name="Net-(D2-Pad1)">
       <node ref="L1" pin="1"/>
-      <node ref="U1" pin="2"/>
       <node ref="D2" pin="1"/>
+      <node ref="U1" pin="2"/>
     </net>
-    <net code="8" name="+3V3">
-      <node ref="R9" pin="1"/>
-      <node ref="LED1" pin="2"/>
-      <node ref="LED2" pin="2"/>
-      <node ref="P1" pin="1"/>
-      <node ref="SW1" pin="1"/>
-      <node ref="U1" pin="4"/>
-      <node ref="C2" pin="1"/>
-      <node ref="L1" pin="2"/>
-      <node ref="R1" pin="1"/>
+    <net code="7" name="+3V3">
       <node ref="U2" pin="8"/>
+      <node ref="R1" pin="1"/>
+      <node ref="LED1" pin="2"/>
+      <node ref="R9" pin="1"/>
+      <node ref="SW1" pin="1"/>
+      <node ref="LED2" pin="2"/>
+      <node ref="U1" pin="4"/>
+      <node ref="P1" pin="1"/>
+      <node ref="L1" pin="2"/>
       <node ref="U2" pin="3"/>
+      <node ref="C2" pin="1"/>
     </net>
-    <net code="9" name="Net-(P1-Pad6)">
+    <net code="8" name="Net-(P1-Pad6)">
       <node ref="P1" pin="6"/>
     </net>
-    <net code="10" name="Net-(U2-Pad1)">
+    <net code="9" name="Net-(U2-Pad1)">
       <node ref="U2" pin="1"/>
     </net>
-    <net code="11" name="Net-(U2-Pad2)">
+    <net code="10" name="Net-(U2-Pad2)">
       <node ref="U2" pin="2"/>
     </net>
-    <net code="12" name="Net-(U2-Pad4)">
+    <net code="11" name="Net-(U2-Pad4)">
       <node ref="U2" pin="4"/>
     </net>
-    <net code="13" name="Net-(U2-Pad5)">
+    <net code="12" name="Net-(U2-Pad5)">
       <node ref="U2" pin="5"/>
     </net>
-    <net code="14" name="Net-(U2-Pad6)">
+    <net code="13" name="Net-(U2-Pad6)">
       <node ref="U2" pin="6"/>
     </net>
-    <net code="15" name="/WifiReset">
+    <net code="14" name="/WifiReset">
       <node ref="U2" pin="7"/>
       <node ref="R5" pin="1"/>
       <node ref="SW1" pin="2"/>
     </net>
-    <net code="16" name="/GPIO0">
+    <net code="15" name="/GPIO0">
       <node ref="P1" pin="5"/>
       <node ref="R1" pin="2"/>
       <node ref="U2" pin="12"/>
     </net>
-    <net code="17" name="+12V">
-      <node ref="C5" pin="1"/>
-      <node ref="D1" pin="3"/>
+    <net code="16" name="+12V">
       <node ref="U1" pin="1"/>
-      <node ref="C3" pin="1"/>
-      <node ref="C4" pin="1"/>
-      <node ref="P3" pin="1"/>
+      <node ref="C5" pin="1"/>
+      <node ref="P3" pin="2"/>
       <node ref="LED3" pin="2"/>
+      <node ref="D1" pin="3"/>
+      <node ref="C4" pin="1"/>
+      <node ref="C3" pin="1"/>
+    </net>
+    <net code="17" name="Earth">
+      <node ref="U2" pin="9"/>
+      <node ref="U2" pin="10"/>
+      <node ref="Q1" pin="1"/>
+      <node ref="Q2" pin="S"/>
+      <node ref="C4" pin="2"/>
+      <node ref="U1" pin="3"/>
+      <node ref="U1" pin="5"/>
+      <node ref="C3" pin="2"/>
+      <node ref="R7" pin="2"/>
+      <node ref="LED4" pin="1"/>
+      <node ref="D2" pin="2"/>
+      <node ref="C2" pin="2"/>
+      <node ref="D1" pin="1"/>
+      <node ref="C5" pin="2"/>
+      <node ref="P1" pin="2"/>
     </net>
     <net code="18" name="Net-(D1-Pad2)">
-      <node ref="P2" pin="1"/>
       <node ref="D1" pin="2"/>
+      <node ref="P2" pin="1"/>
     </net>
     <net code="19" name="Net-(Q1-Pad3)">
       <node ref="R3" pin="2"/>
       <node ref="R2" pin="2"/>
       <node ref="Q1" pin="3"/>
     </net>
-    <net code="20" name="Net-(D1-Pad4)">
+    <net code="20" name="Net-(Q1-Pad2)">
+      <node ref="R4" pin="2"/>
+      <node ref="Q1" pin="2"/>
+    </net>
+    <net code="21" name="Net-(D1-Pad4)">
       <node ref="D1" pin="4"/>
       <node ref="P2" pin="2"/>
     </net>
-    <net code="21" name="Net-(Q1-Pad2)">
-      <node ref="Q1" pin="2"/>
-      <node ref="R4" pin="2"/>
-    </net>
     <net code="22" name="Net-(LED3-Pad1)">
-      <node ref="LED3" pin="1"/>
       <node ref="R8" pin="1"/>
+      <node ref="LED3" pin="1"/>
     </net>
     <net code="23" name="Net-(LED4-Pad2)">
-      <node ref="LED4" pin="2"/>
       <node ref="R9" pin="2"/>
+      <node ref="LED4" pin="2"/>
     </net>
-    <net code="24" name="Net-(LED1-Pad1)">
+    <net code="24" name="Net-(R5-Pad2)">
+      <node ref="R5" pin="2"/>
+    </net>
+    <net code="25" name="Net-(LED1-Pad1)">
       <node ref="LED1" pin="1"/>
       <node ref="R2" pin="1"/>
     </net>
-    <net code="25" name="Net-(LED2-Pad1)">
-      <node ref="LED2" pin="1"/>
+    <net code="26" name="Net-(LED2-Pad1)">
       <node ref="R3" pin="1"/>
+      <node ref="LED2" pin="1"/>
     </net>
-    <net code="26" name="Net-(Q2-PadG)">
-      <node ref="R6" pin="1"/>
+    <net code="27" name="Net-(Q2-PadG)">
       <node ref="Q2" pin="G"/>
       <node ref="R7" pin="1"/>
+      <node ref="R6" pin="1"/>
     </net>
-    <net code="27" name="Net-(P3-Pad2)">
-      <node ref="R8" pin="2"/>
-      <node ref="P3" pin="2"/>
+    <net code="28" name="Net-(P3-Pad1)">
       <node ref="Q2" pin="D"/>
+      <node ref="P3" pin="1"/>
+      <node ref="R8" pin="2"/>
     </net>
   </nets>
 </export>

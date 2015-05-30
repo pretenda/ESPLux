@@ -1,0 +1,8 @@
+﻿Int		PreviousLevel
+Int		NumOfRestarts
+Int		CurrentLightLevel
+Bool	DimCapable
+String	LightName
+Int		ACOn
+Int		ACOnDimLevel
+Bool	ESPDiscovery
