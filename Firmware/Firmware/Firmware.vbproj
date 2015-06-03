@@ -81,6 +81,7 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="GlobalVariables.txt" />
     <Content Include="settings.html" />
     <Content Include="support.html" />
     <Content Include="esplux.js" />
