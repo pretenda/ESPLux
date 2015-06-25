@@ -86,7 +86,7 @@
     <Content Include="support.html" />
     <Content Include="esplux.js" />
     <Content Include="index.html" />
-    <Content Include="jquery-1.11.2.min.js" />
+    <Content Include="jquery.min.js" />
     <Content Include="jquery-ui.min.css" />
     <Content Include="jquery-ui.min.js" />
     <Content Include="jquery.slider.js" />
@@ -125,6 +125,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="init.lua" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -134,6 +135,8 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <Content Include="setwifi.lua" />
+    <Content Include="server.lua" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

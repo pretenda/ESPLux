@@ -1,0 +1,1 @@
+dofile ("server.lua")
