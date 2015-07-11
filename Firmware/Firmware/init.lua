@@ -3,7 +3,7 @@
 	gpio.mode(1,gpio.OUTPUT)
 	pwm.setup(1,1000,1023)
 	pwm.start(1)
-	pwm.setduty(1,1023)
+	pwm.setduty(1,0)
 	
 	
 local wifiConfig = {}

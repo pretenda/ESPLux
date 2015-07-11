@@ -54,10 +54,11 @@ function indLights(e) {
 
 function lightDim(e) {
     if (flipCheck(e) == true) {
-        //sendWithoutCaring("setIndicator.lua?state=on");
+        sendWithoutCaring("setDim.lua?val=1");
         dimCap = true;
     }
     else {
+        sendWithoutCaring("setDim.lua?val=0");
         dimCap = false;
     }
 }
@@ -65,11 +66,13 @@ function lightDim(e) {
 function lightMem(e) {
     if (flipCheck(e) == true)
         //sendWithoutCaring("setIndicator.lua?state=on");
-        alert("Elephant Memory");
+        sendWithoutCaring("setACOn.lua?val=1");
     else
-        alert("Goldfish Memory");
+        sendWithoutCaring("setACOn.lua?val=0");
 }
 function saveName(e) {
+    sendWithoutCaring("setName.lua?val=" + document.getElementById("name").value);
+	document.getElementById("LightName").innerHTML = document.getElementById("name").value;
     e.currentTarget.style.width = e.currentTarget.offsetWidth;
     e.currentTarget.style.color = "#aaa";
     e.currentTarget.innerHTML = "&nbsp; saved &nbsp;";
