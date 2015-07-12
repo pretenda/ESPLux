@@ -1,8 +1,0 @@
-file.remove("http/setIndicator.lua")
-file.rename("setIndicator.lua","http/setIndicator.lua")
-file.remove("http/setLights.lua")
-file.rename("setLights.lua","http/setLights.lua")
-file.remove("http/setLights2.lua")
-file.rename("setLights2.lua","http/setLights2.lua")
-file.remove("http/setVar.lua")
-file.rename("setVar.lua","http/setVar.lua")
