@@ -6,6 +6,7 @@
 	pwm.setduty(1,0)
 	
 	dofile("resetWireless.lua")
+	dofile("setLightLevel.lua")
 
 print('set (mode='..wifi.getmode()..')')
 print('MAC: ',wifi.sta.getmac())
