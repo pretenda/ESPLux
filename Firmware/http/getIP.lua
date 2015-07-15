@@ -1,11 +1,15 @@
 return function (connection, args)   
 	connection:send("HTTP/1.0 200 OK\r\nContent-Type: application/json\r\nCache-Control: private, no-store\r\n\r\n")
-    ip, nm, gw = wifi.sta.getip()
+
+	file.open("LightName.txt", "r")
 
 
-	connection:send(ip)
+	connection:send(file.readline())
 	connection:send("\n")
-	connection:send(nm)
+	connection:send(file.readline())
 	connection:send("\n")
-	connection:send(gw)
+	connection:send(file.readline())
+	connection:send("\n")
+	connection:send(file.readline())
+	file.close()
 end

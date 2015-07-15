@@ -107,11 +107,11 @@
             background: #4caf50;
         }
 
-        .o {
+        .o, .so .check {
             border: 1px solid #e64a19;
         }
 
-            .o.selected {
+            .o.selected, .so .selected {
                 background: #ff5722;
             }
 
@@ -219,8 +219,11 @@
                     <li><span class="label">Network:</span><span class="input"><select class="o"><option>- No Change - </option>
                         <option>Mekanism</option>
                         <option>Soundmate</option>
-                    </select></span></li>
+                    </select></span>
+                        <button id="scan" style="margin: 0px 0px 1px -26px; padding: 7px;">
+                            Scan</button></li>
                     <li><span class="label">Password:</span><span class="input"><input class="o" /></span></li>
+                    <li id="staticIP" class="so"><span class="check selected"></span>Set Static IP?</li>
                     <li><span class="label">IP Address:</span><span class="input"><input id="ip" class="o" /></span></li>
                     <li><span class="label">Subnet:</span><span class="input"><input id="sn" class="o" /></span></li>
                     <li><span class="label">Gateway:</span><span class="input"><input id="gw" class="o" /></span></li>

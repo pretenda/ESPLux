@@ -8,8 +8,14 @@ var lm = document.getElementById("lightMem");
 lm.addEventListener("click", lightMem, false);
 var ld = document.getElementById("lightDim");
 ld.addEventListener("click", lightDim, false);
+var ld = document.getElementById("staticIP");
+ld.addEventListener("click", staticIP, false);
 sn.addEventListener("click", saveName, false);
 
+
+var ip = document.getElementById("ip");	
+var sn = document.getElementById("sn");	
+var gw = document.getElementById("gw");	
 
 var pot = document.getElementById("pot");
 var percOn = document.getElementById("percOn");
@@ -72,6 +78,20 @@ function lightMem(e) {
     else
         sendWithoutCaring("setACOn.lua?val=0");
 }
+function staticIP(e) {
+    if (flipCheck(e) == true)
+	{
+		ip.parentNode.parentNode.style.display = "block";
+		gw.parentNode.parentNode.style.display = "block";
+		sn.parentNode.parentNode.style.display = "block";
+	}
+    else
+	{
+		ip.parentNode.parentNode.style.display = "none";
+		gw.parentNode.parentNode.style.display = "none";
+		sn.parentNode.parentNode.style.display = "none";
+	}
+}
 function saveName(e) {
     sendWithoutCaring("setName.lua?val=" + document.getElementById("name").value);
 	document.getElementById("LightName").innerHTML = document.getElementById("name").value;
@@ -131,9 +151,9 @@ function getState(url) {
 			pot.innerHTML = pc;
 			percOn.style.width = pc + "%";
 			
-			document.getElementById("ip").value = vals[4];	
-			document.getElementById("sn").value = vals[5];	
-			document.getElementById("gw").value = vals[6];	
+			ip.value = vals[4];	
+			sn.value = vals[5];	
+			gw.value = vals[6];	
 			for (i = 0; i < vals.length; i++)
 			{
 			//alert(vals[i] + i);
