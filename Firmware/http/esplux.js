@@ -62,12 +62,16 @@ function indLights(e) {
 
 function lightDim(e) {
     if (flipCheck(e) == true) {
-        sendWithoutCaring("setDim.lua?val=1");
         dimCap = true;
+		pot.parentNode.style.textAlign = "right";
+		sl.style.display = "block";
+        sendWithoutCaring("setDim.lua?val=1");
     }
     else {
-        sendWithoutCaring("setDim.lua?val=0");
         dimCap = false;
+		pot.parentNode.style.textAlign = "center";
+		sl.style.display = "none";
+        sendWithoutCaring("setDim.lua?val=0");
     }
 }
 
@@ -133,18 +137,27 @@ function getState(url) {
 }
 	function parseResp(cap)
 	{
-//	cap = "1\n1\nGarssage\n133\n192.168.1.36\n255.255.255.0\n192.168.1.1";
+	//cap = "1\n1\nGarssage\n133\n192.168.1.36\n255.255.255.0\n192.168.1.1";
 			var vals = cap.split("\n");
 			if (vals[0] == "1")
 				lm.firstChild.className = "check selected";
 			else
 				lm.firstChild.className = "check";
 			if (vals[1] == "1")
+			{
 				ld.firstChild.className = "check selected";
+        dimCap = true;
+		pot.parentNode.style.textAlign = "right";
+		sl.style.display = "block";
+			}
 			else
 			{
 				ld.firstChild.className = "check";
+        dimCap = false;
+		pot.parentNode.style.textAlign = "center";
+		sl.style.display = "none";
 			}
+		
 			document.getElementById("LightName").innerHTML = vals[2];
 			document.getElementById("name").value = vals[2];
 			var pc = Math.round(vals[3] / 1023 * 100);
@@ -159,5 +172,5 @@ function getState(url) {
 			//alert(vals[i] + i);
 			}
 			}
-			
+			//parseResp("");
 			getState("getState.lua");
