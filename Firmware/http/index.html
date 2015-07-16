@@ -13,6 +13,7 @@
         .box, header, button, select:focus, input:focus {
             box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
         }
+
         .box, header {
             background: #fff;
         }
@@ -27,6 +28,9 @@
             width: 100%;
             margin: 0px;
             top: 0px;
+		    font-size: 35px;
+		    padding-left: 20px;
+			font-weight: 100;
         }
 
         #cont {
@@ -121,6 +125,8 @@
             top: 13px;
             color: #888;
             text-decoration: none;
+			font-size: 17px;
+			font-weight: 400;
         }
 
         .hr, .save {
@@ -155,9 +161,11 @@
             font-size: 12pt;
             padding: 5px;
         }
+
         .bl {
             background: #00b9d8;
         }
+
         .fz {
             font-size: 30pt;
         }
@@ -166,7 +174,7 @@
 <body>
     <div id="cont">
         <header id="tb">
-            <img src="esplux.png" />
+            ESPLux
             <span><a href="http://esplux.info" target="_blank" id="support">Support</a></span>
         </header>
         <div id="lc" class="box">
@@ -214,13 +222,11 @@
             <div class="head" style="background: #e64a19;">
                 Wi-Fi
             </div>
-            <div class="content">
+            <div class="content" id="wifiC">
                 <ul>
-                    <li><span class="label">Network:</span><span class="input"><select id="netList" class="o"><option>- No Change - </option>
-                    </select></span>
-                        <button id="scan" style="margin: 0px 0px 1px -26px; padding: 7px;">
-                            Scan</button></li>
-                    <li><span class="label">Password:</span><span class="input"><input class="o" type="password" /></span></li>
+                    <li><span class="label">SSID:</span><span class="input"><input id="ssid" class="o" /></span>
+                        <span style="color: #999; font-size: 10pt;">(Leave this field blank if you want to change your IP without affecting your Wi-Fi settings)</span></li>
+                    <li><span class="label">Password:</span><span class="input"><input id="pw" class="o" type="password" /></span></li>
                     <li id="staticIP" class="so"><span class="check selected"></span>Set Static IP?</li>
                     <li><span class="label">IP Address:</span><span class="input"><input id="ip" class="o" /></span></li>
                     <li><span class="label">Subnet:</span><span class="input"><input id="sn" class="o" /></span></li>
@@ -228,10 +234,215 @@
                 </ul>
             </div>
             <div class="save">
-                <button>Save Wireless Settings</button>
+                <button id="saveNet">Save Wireless Settings</button>
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="esplux.js"></script>
+    <script type="text/javascript">
+        var dimCap = true;
+        var sl = document.getElementById("bar");
+        var ind = document.getElementById("ind");
+        var sna = document.getElementById("saveName");
+        var lm = document.getElementById("lightMem");
+        var ld = document.getElementById("lightDim");
+        var statip = document.getElementById("staticIP");
+        var saveNet = document.getElementById("saveNet");
+
+        var ip = document.getElementById("ip");
+        var sn = document.getElementById("sn");
+        var gw = document.getElementById("gw");
+        var ssid = document.getElementById("ssid");
+        var pw = document.getElementById("pw");
+
+        var pot = document.getElementById("pot");
+        var percOn = document.getElementById("percOn");
+
+        var sBool = 0;
+
+        sl.addEventListener("click", sc, false);
+        ind.addEventListener("click", indLights, false);
+        sna.addEventListener("click", saveName, false);
+        lm.addEventListener("click", lightMem, false);
+        ld.addEventListener("click", lightDim, false);
+        statip.addEventListener("click", staticIP, false);
+        saveNet.addEventListener("click", saveNetwork, false);
+
+        function sc(e) {
+            var parentPosition = getPosition(e.currentTarget);
+            var xPosition = e.clientX - parentPosition.x;
+            var perc = Math.round(xPosition / e.currentTarget.offsetWidth * 100);
+            if (dimCap == true)
+                setLight(perc);
+        }
+        function setLight(perc) {
+            pot.innerHTML = perc;
+            percOn.style.width = perc + "%";
+            sendWithoutCaring("setLights.lua?val=" + Math.round(perc / 100 * 1023));
+        }
+        function getPosition(element) {
+            var xPosition = 0;
+            var yPosition = 0;
+
+            while (element) {
+                xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+                yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+                element = element.offsetParent;
+            }
+            return { x: xPosition, y: yPosition };
+        }
+        function flipCheck(e) {
+            if (e.currentTarget.firstChild.className.indexOf('selected') > -1) {
+                e.currentTarget.firstChild.className = 'check';
+                return false;
+            }
+            else {
+                e.currentTarget.firstChild.className = 'check selected';
+                return true;
+            }
+        }
+        function indLights(e) {
+            if (flipCheck(e) == true)
+                sendWithoutCaring("setIndicator.lua?state=on");
+            else
+                sendWithoutCaring("setIndicator.lua?state=off");
+        }
+
+        function lightDim(e) {
+            if (flipCheck(e) == true) {
+                dimCap = true;
+                pot.parentNode.style.textAlign = "right";
+                sl.style.display = "block";
+                sendWithoutCaring("setDim.lua?val=1");
+            }
+            else {
+                dimCap = false;
+                pot.parentNode.style.textAlign = "center";
+                sl.style.display = "none";
+                sendWithoutCaring("setDim.lua?val=0");
+            }
+        }
+
+        function lightMem(e) {
+            if (flipCheck(e) == true)
+                sendWithoutCaring("setACOn.lua?val=1");
+            else
+                sendWithoutCaring("setACOn.lua?val=0");
+        }
+        function staticIP(e) {
+            if (flipCheck(e) == true) {
+                ip.parentNode.parentNode.style.display = "block";
+                gw.parentNode.parentNode.style.display = "block";
+                sn.parentNode.parentNode.style.display = "block";
+                sBool = 1;
+            }
+            else {
+                ip.parentNode.parentNode.style.display = "none";
+                gw.parentNode.parentNode.style.display = "none";
+                sn.parentNode.parentNode.style.display = "none";
+                sBool = 0;
+            }
+        }
+        function saveName(e) {
+            sendWithoutCaring("setName.lua?val=" + document.getElementById("name").value);
+            document.getElementById("LightName").innerHTML = document.getElementById("name").value;
+            e.currentTarget.style.width = e.currentTarget.offsetWidth;
+            e.currentTarget.style.color = "#aaa";
+            e.currentTarget.innerHTML = "&nbsp; saved &nbsp;";
+            setTimeout(function () { sn.innerHTML = "save name"; sn.style.color = "#fff"; }, 3000);
+            setTimeout(function () { getState("getState.lua"); }, 1000);
+        }
+        function saveNetwork(e) {
+
+            if (ssid.value == "") {
+                sendWithoutCaring("setIP.lua?static=" + sBool + "&ip=" + ip.value + "&nm=" + sn.value + "&gw=" + gw.value);
+            }
+            else {
+				if (sBool == 0) {
+					ip.value = "192.168.4.1";
+					sn.value = "255.255.255.0";
+					gw.value = "192.168.4.1";
+				}
+                sendWithoutCaring("setWifi.lua?s=" + ssid.value + "&p=" + pw.value + "&static=" + sBool + "&ip=" + ip.value + "&nm=" + sn.value + "&gw=" + gw.value);
+            }
+            document.getElementById("wifiC").innerHTML = '<div style="text-align: center;">You have changed your network settings. Your ESPLux is in the process of being restarted. If your browser hasn\'t reloaded this page in 10 seconds, you\'ll need to find it\'s IP address.';
+
+            if (sBool == 1) {
+
+                setTimeout(function () { document.location = "http://" + ip.value; }, 5000);
+            }
+            else {
+                setTimeout(function () { document.location = "/"; }, 5000);
+            }
+        }
+        function sendWithoutCaring(url) {
+            var xmlhttp;
+            if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            }
+            else {// code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+        }
+        function getState(url) {
+            var xmlhttp;
+            if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            }
+            else {// code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    cap = xmlhttp.responseText;
+                    parseResp(cap);
+                }
+            }
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+        }
+        function parseResp(cap) {
+            //cap = "1\n1\nGarage\n133\n0\n192.168.1.36\n255.255.255.0\n192.168.1.1";
+            var vals = cap.split("\n");
+            if (vals[0] == "1")
+                lm.firstChild.className = "check selected";
+            else
+                lm.firstChild.className = "check";
+            if (vals[1] == "1") {
+                ld.firstChild.className = "check selected";
+                dimCap = true;
+                pot.parentNode.style.textAlign = "right";
+                sl.style.display = "block";
+            }
+            else {
+                ld.firstChild.className = "check";
+                dimCap = false;
+                pot.parentNode.style.textAlign = "center";
+                sl.style.display = "none";
+            }
+
+            document.getElementById("LightName").innerHTML = vals[2];
+            document.getElementById("name").value = vals[2];
+            var pc = Math.round(vals[3] / 1023 * 100);
+            pot.innerHTML = pc;
+            percOn.style.width = pc + "%";
+
+            if (vals[4] == "1") {
+                statip.firstChild.className = "check selected";
+                sBool = 1;
+            }
+            else {
+                statip.firstChild.className = "check";
+                ip.parentNode.parentNode.style.display = "none";
+                gw.parentNode.parentNode.style.display = "none";
+                sn.parentNode.parentNode.style.display = "none";
+            }
+            ip.value = vals[5];
+            sn.value = vals[6];
+            gw.value = vals[7];
+        }
+        getState("getState.lua");
+    </script>
 </body>
 </html>

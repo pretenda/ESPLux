@@ -9,7 +9,23 @@ if gpio.read(7) == 1 then
 	wifiConfig = nil
 	gpio.mode(2, gpio.OUTPUT)
 	gpio.write(2, gpio.HIGH)
-	print("Reset Wifi")
+	print("ESPLux: Reset Wifi")
+	
+
+local joinCounter = 0
+local joinMaxAttempts = 2
+tmr.alarm(0, 3000, 1, function()
+   if joinCounter < joinMaxAttempts then
+      print('Restarting soon .. ')
+      joinCounter = joinCounter +1
+   else
+	node.restart()
+   end
+end)
+
+
+
+
 else
-	print("No wifi reset needed")
+	print("ESPLux: No wifi reset needed")
 end

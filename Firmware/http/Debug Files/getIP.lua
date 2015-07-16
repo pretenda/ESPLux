@@ -3,13 +3,9 @@ return function (connection, args)
 
 	file.open("Net.txt", "r")
 
-
 	connection:send(file.readline())
-	connection:send("\n")
 	connection:send(file.readline())
-	connection:send("\n")
 	connection:send(file.readline())
-	connection:send("\n")
 	connection:send(file.readline())
 	file.close()
 end

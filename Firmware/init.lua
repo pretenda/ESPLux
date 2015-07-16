@@ -4,9 +4,7 @@
 	pwm.setup(1,1000,1023)
 	pwm.start(1)
 	pwm.setduty(1,0)
-	
-	dofile("resetWireless.lua")
-	dofile("setLightLevel.lua")
+
 
 print('set (mode='..wifi.getmode()..')')
 print('MAC: ',wifi.sta.getmac())
@@ -30,8 +28,16 @@ local compileAndRemoveIfNeeded = function(f)
    end
 end
 
-local serverFiles = {'httpserver.lua', 'httpserver-request.lua', 'httpserver-static.lua', 'httpserver-header.lua', 'httpserver-error.lua'}
+local serverFiles = {'httpserver.lua', 'httpserver-request.lua', 'httpserver-static.lua', 'httpserver-header.lua', 'httpserver-error.lua', 'setLightLevel.lua', 'setStartIP.lua', 'resetWireless.lua'}
 for i, f in ipairs(serverFiles) do compileAndRemoveIfNeeded(f) end
+
+
+	dofile("setLightLevel.lc")
+
+	dofile("setStartIP.lc")
+	
+	dofile("resetWireless.lc")
+
 
 compileAndRemoveIfNeeded = nil
 serverFiles = nil
@@ -41,15 +47,20 @@ collectgarbage()
 -- Once the device is connected, you may start the HTTP server.
 
 local joinCounter = 0
-local joinMaxAttempts = 5
+local joinMaxAttempts = 3
 tmr.alarm(0, 3000, 1, function()
+   if wifi.getmode() == wifi.SOFTAP then
+	print('Running as AP')
+	dofile("httpserver.lc")(80)
+   else
+
    local ip = wifi.sta.getip()
    if ip == nil and joinCounter < joinMaxAttempts then
       print('Connecting to WiFi Access Point ...')
       joinCounter = joinCounter +1
    else
       if joinCounter == joinMaxAttempts then
-         print('Faild to connect to WiFi Access Point.')
+         print('Failed to connect to WiFi Access Point.')
          dofile("httpserver.lc")(80)
       else
          print('IP: ',ip)
@@ -60,6 +71,7 @@ tmr.alarm(0, 3000, 1, function()
       joinCounter = nil
       joinMaxAttempts = nil
       collectgarbage()
+end
    end
 
 end)

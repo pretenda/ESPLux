@@ -1,8 +1,14 @@
-local ACOn = 0
+local staticIP = 0
 file.open("Net.txt", "r")
-if file.readline() == "1" then
-		wifi.sta.setip({ip=file.readline(), netmask=file.readline(), gateway=file.readline()})
-	end
+staticIP = file.readline()
+local ipA = file.readline()
+local nm = file.readline()
+local gw = file.readline()
 
-
+file.close()
+if staticIP == "1\n" then
+	wifi.sta.setip({ip=ipA, netmask=nm, gateway=gw})
+	print("ESPLux: Static IP Set!")
+else
+	print("ESPLux: Using DHCP")
 end
