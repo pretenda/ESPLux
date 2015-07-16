@@ -49,30 +49,25 @@ collectgarbage()
 local joinCounter = 0
 local joinMaxAttempts = 3
 tmr.alarm(0, 3000, 1, function()
-   if wifi.getmode() == wifi.SOFTAP then
-	print('Running as AP')
-	dofile("httpserver.lc")(80)
-   else
 
-   local ip = wifi.sta.getip()
-   if ip == nil and joinCounter < joinMaxAttempts then
-      print('Connecting to WiFi Access Point ...')
-      joinCounter = joinCounter +1
-   else
-      if joinCounter == joinMaxAttempts then
-         print('Failed to connect to WiFi Access Point.')
-         dofile("httpserver.lc")(80)
-      else
-         print('IP: ',ip)
-         -- Uncomment to automatically start the server in port 80
-         dofile("httpserver.lc")(80)
-      end
+   	local ip = wifi.sta.getip()
+   	if ip == nil and joinCounter < joinMaxAttempts then
+     		print('Connecting to WiFi Access Point ...')
+		joinCounter = joinCounter +1
+	else
+		if joinCounter == joinMaxAttempts then
+			print('Failed to connect to WiFi Access Point.')
+			dofile("httpserver.lc")(80)
+		else
+			print('IP: ',ip)
+			-- Uncomment to automatically start the server in port 80
+			dofile("httpserver.lc")(80)
+		end
       tmr.stop(0)
       joinCounter = nil
       joinMaxAttempts = nil
       collectgarbage()
 end
-   end
 
 end)
 
