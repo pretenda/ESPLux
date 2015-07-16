@@ -2,15 +2,17 @@
 var sl = document.getElementById("bar");
 sl.addEventListener("click", sc, false);
 var ind = document.getElementById("ind");
-var sn = document.getElementById("saveName");
 ind.addEventListener("click", indLights, false);
+var sn = document.getElementById("saveName");
+sn.addEventListener("click", saveName, false);
+var scanbt = document.getElementById("scan");
+scanbt.addEventListener("click", scan, false);
 var lm = document.getElementById("lightMem");
 lm.addEventListener("click", lightMem, false);
 var ld = document.getElementById("lightDim");
 ld.addEventListener("click", lightDim, false);
-var ld = document.getElementById("staticIP");
-ld.addEventListener("click", staticIP, false);
-sn.addEventListener("click", saveName, false);
+var statip = document.getElementById("staticIP");
+statip.addEventListener("click", staticIP, false);
 
 
 var ip = document.getElementById("ip");	
@@ -105,6 +107,30 @@ function saveName(e) {
     setTimeout(function () { sn.innerHTML = "save name"; sn.style.color = "#fff";}, 3000);
 	setTimeout(function () { getState("getState.lua"); }, 1000);
 }
+function scan(e) {
+e.currentTarget.innerHTML = "Scanning ...";
+e.currentTarget.style.color = "#aaa";
+siteSurvey();
+}
+function siteSurvey()
+{
+	alert("Scansssning");
+	scanbt.innerHTML = "updated!";
+	var nl = document.getElementById("netList");
+	nl.length = 1;
+		
+	var aps = "mekanism\nSoundlink\nTops";
+	var apl = aps.split("\n");
+	for (i = 0; i < apl.length; i++)
+	{
+		//nl.options[i+1] = apl[i];
+		var option = document.createElement("option");
+		option.text = apl[i];
+		nl.add(option);
+	}
+	
+    setTimeout(function () { scanbt.innerHTML = "scan"; scanbt.style.color = "#fff";}, 3000);
+}
 function sendWithoutCaring(url) {
     var xmlhttp;
     if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -137,7 +163,7 @@ function getState(url) {
 }
 	function parseResp(cap)
 	{
-	//cap = "1\n1\nGarssage\n133\n192.168.1.36\n255.255.255.0\n192.168.1.1";
+	cap = "1\n1\nGarssage\n133\n0\n192.168.1.36\n255.255.255.0\n192.168.1.1";
 			var vals = cap.split("\n");
 			if (vals[0] == "1")
 				lm.firstChild.className = "check selected";
@@ -146,16 +172,16 @@ function getState(url) {
 			if (vals[1] == "1")
 			{
 				ld.firstChild.className = "check selected";
-        dimCap = true;
-		pot.parentNode.style.textAlign = "right";
-		sl.style.display = "block";
+				dimCap = true;
+				pot.parentNode.style.textAlign = "right";
+				sl.style.display = "block";
 			}
 			else
 			{
 				ld.firstChild.className = "check";
-        dimCap = false;
-		pot.parentNode.style.textAlign = "center";
-		sl.style.display = "none";
+				dimCap = false;
+				pot.parentNode.style.textAlign = "center";
+				sl.style.display = "none";
 			}
 		
 			document.getElementById("LightName").innerHTML = vals[2];
@@ -164,13 +190,22 @@ function getState(url) {
 			pot.innerHTML = pc;
 			percOn.style.width = pc + "%";
 			
-			ip.value = vals[4];	
-			sn.value = vals[5];	
-			gw.value = vals[6];	
+			if (vals[4] == "1")
+				statip.firstChild.className = "check selected";
+			else
+			{
+				statip.firstChild.className = "check";
+				ip.parentNode.parentNode.style.display = "none";
+				gw.parentNode.parentNode.style.display = "none";
+				sn.parentNode.parentNode.style.display = "none";
+			}
+			ip.value = vals[5];	
+			sn.value = vals[6];	
+			gw.value = vals[7];	
 			for (i = 0; i < vals.length; i++)
 			{
 			//alert(vals[i] + i);
 			}
 			}
-			//parseResp("");
+			parseResp("");
 			getState("getState.lua");
