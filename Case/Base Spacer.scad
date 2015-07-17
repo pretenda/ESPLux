@@ -7,7 +7,7 @@ circle(3.2/2, $fn = 30);
 }
 module hexagon(length) { width = 2 * length * tan(30); union() { square(size = [ length * 2, width ], center = true); rotate(a = [ 0, 0, 60 ]) { square(size = [ length * 2, width ], center = true); } rotate(a = [ 0, 0, -60 ]) { square(size = [ length * 2, width ], center = true); } } }
 
-
+module baseSpacer() {
 difference()
 {
 	hull()
@@ -25,4 +25,5 @@ square([70-6, 43-16], true);
 square([70-16, 43-6], true);
 
 }
-
+}
+baseSpacer();

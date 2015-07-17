@@ -7,7 +7,8 @@ circle(3.2/2, $fn = 30);
 }
 module hexagon(length) { width = 2 * length * tan(30); union() { square(size = [ length * 2, width ], center = true); rotate(a = [ 0, 0, 60 ]) { square(size = [ length * 2, width ], center = true); } rotate(a = [ 0, 0, -60 ]) { square(size = [ length * 2, width ], center = true); } } }
 
-
+module screwTerminalSpacer()
+{
 difference()
 {
 	hull()
@@ -24,11 +25,13 @@ difference()
 square([70-6, 43-16], true);
 square([70-16, 43-6], true);
 
-translate([-31,3.51/2]) circle(3.2/2, $fn = 30);
-translate([-31,-3.51/2]) circle(3.2/2, $fn = 30);
-translate([-31,3.51+3.51/2]) circle(3.2/2, $fn = 30);
-translate([-31,-3.51-3.51/2]) circle(3.2/2, $fn = 30);
+translate([-31,3.51/2+.5]) circle(3.2/2, $fn = 30);
+translate([-31,-3.51/2-.5]) circle(3.2/2, $fn = 30);
+translate([-31,3.51+3.51/2+.5]) circle(3.2/2, $fn = 30);
+translate([-31,-3.51-3.51/2-.5]) circle(3.2/2, $fn = 30);
 
 translate([25-.5,-11.5+.5]) rotate([0,0,45]) square(10, true);
 }
 
+}
+screwTerminalSpacer();
