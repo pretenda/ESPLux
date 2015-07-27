@@ -1,4 +1,5 @@
 return function (connection, args)   
+         coroutine.yield()
 	connection:send("HTTP/1.0 200 OK\r\nContent-Type: application/json\r\nCache-Control: private, no-store\r\n\r\n")
 	file.open("ACOn.txt", "r")
 	connection:send(file.readline())
@@ -22,4 +23,5 @@ return function (connection, args)
 	connection:send(file.readline())
 	connection:send(file.readline())
 	file.close()
+         coroutine.yield()
 end

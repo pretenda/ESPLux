@@ -43,7 +43,7 @@ return function (port)
             -- print(payload) -- for debugging
             -- parse payload and decide what to serve.
             local req = dofile("httpserver-request.lc")(payload)
-            print("Requested URI: " .. req.request)
+            -- print("Requested URI: " .. req.request) -- uncomment this if you want to be spammed
             if req.methodIsValid and req.method == "GET" then
                onGet(connection, req.uri)
             else
