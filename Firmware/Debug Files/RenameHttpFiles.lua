@@ -1,4 +1,3 @@
-file.rename("esplux.png","http/esplux.png")
 
 file.rename("getState.lua","http/getState.lua")
 
