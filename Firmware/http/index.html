@@ -230,9 +230,9 @@
                         <span style="color: #999; font-size: 10pt;">(Leave this field blank if you want to change your IP without affecting your Wi-Fi settings)</span></li>
                     <li><span class="label">Password:</span><input id="pw" class="o input" type="password" /></li>
                     <li id="staticIP" class="so"><span class="check v"></span>Set Static IP?</li>
-                    <li class="z"><span class="label">IP Address:</span><input id="ip" class="o input" /></li>
-                    <li class="z"><span class="label">Subnet:</span><input id="sn" class="o input" /></li>
-                    <li class="z"><span class="label">Gateway:</span><input id="gw" class="o input" /></li>
+                    <li><span class="label">IP Address:</span><input id="ip" class="o input" /></li>
+                    <li><span class="label">Subnet:</span><input id="sn" class="o input" /></li>
+                    <li><span class="label">Gateway:</span><input id="gw" class="o input" /></li>
                 </ul>
             </div>
             <div class="save">
@@ -256,7 +256,6 @@
         var gw = $("gw");
         var ssid = $("ssid");
         var pw = $("pw");
-        var z = $("z");
 
         var pot = $("pot");
         var percOn = $("percOn");
@@ -334,11 +333,11 @@
         }
         function staticIP(e) {
             if (flipCheck(e) == true) {
-                z.style.display = "block";
+				setSIP("block");
                 sBool = 1;
             }
             else {
-                z.style.display = "none";
+				setSIP("none");
                 sBool = 0;
             }
         }
@@ -427,12 +426,18 @@
             }
             else {
                 statip.firstChild.className = "check";
-                z.style.display = "none";
+				setSIP("none");
             }
             ip.value = vals[5];
             sn.value = vals[6];
             gw.value = vals[7];
         }
+		function setSIP(displayType)
+		{
+			ip.parentNode.style.display = displayType;
+			sn.parentNode.style.display = displayType;
+			gw.parentNode.style.display = displayType;
+		}
         getState("getState.lua");
     </script>
 </body>
