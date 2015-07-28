@@ -5,6 +5,7 @@
 	pwm.start(1)
 	pwm.setduty(1,0)
 
+	dofile("setLightLevel.lua")
 
 print('set (mode='..wifi.getmode()..')')
 print('MAC: ',wifi.sta.getmac())
@@ -28,11 +29,9 @@ local compileAndRemoveIfNeeded = function(f)
    end
 end
 
-local serverFiles = {'httpserver.lua', 'httpserver-request.lua', 'httpserver-static.lua', 'httpserver-header.lua', 'httpserver-error.lua', 'setLightLevel.lua', 'setStartIP.lua', 'resetWireless.lua'}
+local serverFiles = {'httpserver.lua', 'httpserver-request.lua', 'httpserver-static.lua', 'httpserver-header.lua', 'httpserver-error.lua', 'setStartIP.lua', 'resetWireless.lua'}
 for i, f in ipairs(serverFiles) do compileAndRemoveIfNeeded(f) end
 
-
-	dofile("setLightLevel.lc")
 
 	dofile("setStartIP.lc")
 	
