@@ -4,7 +4,7 @@ return function (connection, args)
 	if args.val == "1" then file.write("1")
 	elseif args.val == "0" then file.write("0")
 else
-	connection:send("nfi: ")
+	file.write("1")
 end
 connection:send(args.val)
 	file.close()
