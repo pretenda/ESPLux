@@ -29,13 +29,13 @@ local compileAndRemoveIfNeeded = function(f)
    end
 end
 
-local serverFiles = {'httpserver.lua', 'httpserver-request.lua', 'httpserver-static.lua', 'httpserver-header.lua', 'httpserver-error.lua', 'setStartIP.lua', 'resetWireless.lua'}
+local serverFiles = {'httpserver.lua', 'httpserver-request.lua', 'httpserver-static.lua', 'httpserver-header.lua', 'httpserver-error.lua', 'setStartIP.lua'}
 for i, f in ipairs(serverFiles) do compileAndRemoveIfNeeded(f) end
 
 
+	dofile("resetWireless.lua")
 	dofile("setStartIP.lc")
 	
-	dofile("resetWireless.lc")
 
 
 compileAndRemoveIfNeeded = nil
