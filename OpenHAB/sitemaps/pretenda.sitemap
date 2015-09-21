@@ -1,0 +1,12 @@
+sitemap pretenda label="pretenda"
+{
+    Frame {
+        Text label="Main" icon="sofa" {
+        
+            Frame label="Power" {
+                Switch    item=tvCabLights
+                Slider    item=tvCabLightDim
+            }
+        }
+    }
+}

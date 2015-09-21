@@ -1,0 +1,21 @@
+import org.openhab.core.library.types.*
+import org.openhab.core.persistence.*
+import org.openhab.model.script.actions.*  
+
+rule "ESPLux Dimmer"
+	when
+		Item tvCabLightDim received command
+	then
+		var Number percent = 0
+		if(tvCabLightDim.state instanceof DecimalType) percent = tvCabLightDim.state as DecimalType 
+			
+		if(receivedCommand==INCREASE) percent = percent + 6
+		if(receivedCommand==DECREASE) percent = percent - 6
+
+		if(percent<0)   percent = 0
+		if(percent>100) percent = 100
+		var Number outputVal = 0
+		outputVal = ((Math::round((percent / 100 * 1023).doubleValue))
+		sendHttpGetRequest("http://192.168.1.200/setLights.lua?val="+outputVal)
+		postUpdate(tvCabLightDim, percent);
+end

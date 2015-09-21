@@ -1,0 +1,5 @@
+//
+// Main
+//
+Switch tvCabLights		   "TV Cabinet Lighting"	{http=">[ON:GET:http://192.168.1.200/setLights.lua?val=1023] >[OFF:GET:http://192.168.1.37/setLights.lua?val=0]"}
+Dimmer tvCabLightDim	   "TV Dim [%d]"			{http=">[*:GET:http://192.168.1.200/setLights.lua?val=1023]"}
